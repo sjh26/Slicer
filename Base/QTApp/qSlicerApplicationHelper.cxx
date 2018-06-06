@@ -106,7 +106,7 @@ void qSlicerApplicationHelper::preInitializeApplication(
   // on windows. Unfortunately, this doesn't work well on multi-screens setups.
   // By calling SetProcessDPIAware(), we force the value to
   // PROCESS_SYSTEM_DPI_AWARE instead which fixes those issues.
-  SetProcessDPIAware();
+  //SetProcessDPIAware();
 #endif
 
   // Enable automatic scaling based on the pixel density of the monitor

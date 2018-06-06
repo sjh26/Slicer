@@ -411,9 +411,11 @@ void qSlicerExtensionsInstallWidget::onLinkClicked(const QUrl& url)
   if(url.host() == this->extensionsManagerModel()->serverUrl().host())
     {
     this->Superclass::onLinkClicked(url);
+    qDebug() << "Still on extension manager host";
     }
   else
     {
+    qDebug() << "Attempting external link";
     if(!QDesktopServices::openUrl(url))
       {
       qWarning() << "Failed to open url:" << url;

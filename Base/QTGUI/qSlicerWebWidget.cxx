@@ -132,6 +132,8 @@ void qSlicerWebWidgetPrivate::init()
   QObject::connect(this->WebView->page(), SIGNAL(linkClicked(QUrl)),
                    q, SLOT(onLinkClicked(QUrl)));
 #endif
+  QObject::connect(this->WebView->page(), SIGNAL(linkClicked(QUrl)),
+   q, SLOT(onLinkClicked(QUrl)));
 
 #ifdef Slicer_USE_PYTHONQT_WITH_OPENSSL
 #if (QT_VERSION < QT_VERSION_CHECK(5, 6, 0))

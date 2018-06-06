@@ -42,11 +42,27 @@ class QWebView;
 
 class qSlicerWebEnginePage: public QWebEnginePage
 {
+Q_OBJECT
 public:
   qSlicerWebEnginePage(QWebEngineProfile *profile, QObject *parent = nullptr)
     : QWebEnginePage(profile, parent)
   {
   }
+
+  bool acceptNavigationRequest(const QUrl & url, QWebEnginePage::NavigationType type, bool)
+  {
+    if (type == QWebEnginePage::NavigationTypeLinkClicked)
+    {
+      // retrieve the url here
+      emit linkClicked(url);
+      return false;
+    }
+    return true;
+  }
+
+signals:
+  void linkClicked(QUrl);
+
 protected:
   virtual bool certificateError(const QWebEngineCertificateError &certificateError)
   {
@@ -54,6 +70,8 @@ protected:
              << qPrintable(certificateError.errorDescription());
     return false;
   }
+
+
 };
 
 #endif
