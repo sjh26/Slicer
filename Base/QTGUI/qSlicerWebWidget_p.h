@@ -49,19 +49,27 @@ public:
   {
   }
 
-  bool acceptNavigationRequest(const QUrl & url, QWebEnginePage::NavigationType type, bool)
+
+  bool acceptNavigationRequest(const QUrl & url, QWebEnginePage::NavigationType type, bool isMainFrame)
   {
     if (type == QWebEnginePage::NavigationTypeLinkClicked)
     {
-      // retrieve the url here
+      // redirect to old Qt4 handlers
+      qInfo() << "clicking link";
       emit linkClicked(url);
       return false;
     }
-    return true;
-  }
+    else
+    {
+      //Otherwise, do whatever
+      qInfo() << "something else";
 
+      return this->QWebEnginePage::acceptNavigationRequest(url, type, isMainFrame);
+    }
+  }
 signals:
-  void linkClicked(QUrl);
+  void linkClicked(QUrl url);
+
 
 protected:
   virtual bool certificateError(const QWebEngineCertificateError &certificateError)

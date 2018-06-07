@@ -304,7 +304,9 @@ void qSlicerWebWidget::onLoadFinished(bool ok)
 // --------------------------------------------------------------------------
 void qSlicerWebWidget::onLinkClicked(const QUrl& url)
 {
+  qInfo() << "Setting internal url";
   this->webView()->setUrl(url);
+
 }
 
 // --------------------------------------------------------------------------

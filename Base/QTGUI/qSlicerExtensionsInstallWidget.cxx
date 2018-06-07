@@ -398,11 +398,11 @@ void qSlicerExtensionsInstallWidget::onLoadFinished(bool ok)
 {
   Q_D(qSlicerExtensionsInstallWidget);
   this->Superclass::onLoadFinished(ok);
-  if(!ok)
-    {
-    d->setFailurePage(QStringList() << QString("Failed to load extension page using this URL: <strong>%1</strong>")
-                      .arg(d->extensionsListUrl().toString()));
-    }
+  //if(!ok)
+  //  {
+  //  d->setFailurePage(QStringList() << QString("Failed to load extension page using this URL: <strong>%1</strong>")
+  //                    .arg(d->extensionsListUrl().toString()));
+  //  }
 }
 
 // --------------------------------------------------------------------------
@@ -411,11 +411,11 @@ void qSlicerExtensionsInstallWidget::onLinkClicked(const QUrl& url)
   if(url.host() == this->extensionsManagerModel()->serverUrl().host())
     {
     this->Superclass::onLinkClicked(url);
-    qDebug() << "Still on extension manager host";
+    qInfo() << "Still on extension manager host: " << url.toString();
     }
   else
     {
-    qDebug() << "Attempting external link";
+    qInfo() << "Attempting external link";
     if(!QDesktopServices::openUrl(url))
       {
       qWarning() << "Failed to open url:" << url;
