@@ -415,7 +415,7 @@ void qSlicerExtensionsInstallWidget::onLinkClicked(const QUrl& url)
     }
   else
     {
-    qInfo() << "Attempting external link";
+    qInfo() << "Attempting external link: " << url.toString();
     if(!QDesktopServices::openUrl(url))
       {
       qWarning() << "Failed to open url:" << url;

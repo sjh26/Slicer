@@ -28,8 +28,11 @@
 #include "qSlicerBaseQTGUIExport.h"
 #include "qSlicerWebWidget.h"
 
+
 class qSlicerExtensionsInstallWidgetPrivate;
 class qSlicerExtensionsManagerModel;
+
+
 
 class Q_SLICER_BASE_QTGUI_EXPORT qSlicerExtensionsInstallWidget
   : public qSlicerWebWidget

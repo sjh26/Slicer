@@ -94,6 +94,8 @@ void qSlicerWebWidgetPrivate::init()
   this->WebChannel = new QWebChannel(this->WebView->page());
   this->initializeWebChannel(this->WebChannel);
   this->WebView->page()->setWebChannel(this->WebChannel);
+  RequestInterceptor *interceptor = new RequestInterceptor();
+  this->WebView->page()->profile()->setRequestInterceptor(interceptor);
 
   // XXX Since relying on automatic deletion of QWebEngineView when the application
   // exit causes the application to crash. This is a workaround for explicitly
@@ -114,6 +116,8 @@ void qSlicerWebWidgetPrivate::init()
 
   QObject::connect(this->WebView, SIGNAL(loadProgress(int)),
                    this->ProgressBar, SLOT(setValue(int)));
+  QObject::connect(this->WebView, SIGNAL(navigationRequested(WebEngineNavigationRequest)),
+   q, SLOT(setValue(int)));
 
   this->ProgressBar->setVisible(false);
 

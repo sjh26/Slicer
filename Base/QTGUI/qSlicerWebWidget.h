@@ -33,6 +33,7 @@
 class QNetworkReply;
 class qSlicerWebWidgetPrivate;
 class QUrl;
+class WebEngineNavigationRequest;
 #ifdef Slicer_HAVE_WEBKIT_SUPPORT
 class QWebView;
 #else
@@ -81,6 +82,8 @@ public slots:
   void onDownloadProgress(qint64 bytesReceived, qint64 bytesTotal);
 
   void onDownloadFinished(QNetworkReply* reply);
+
+
 
 protected slots:
   virtual void initJavascript();
