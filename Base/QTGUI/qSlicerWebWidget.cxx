@@ -116,8 +116,8 @@ void qSlicerWebWidgetPrivate::init()
 
   QObject::connect(this->WebView, SIGNAL(loadProgress(int)),
                    this->ProgressBar, SLOT(setValue(int)));
-  QObject::connect(this->WebView, SIGNAL(navigationRequested(WebEngineNavigationRequest)),
-   q, SLOT(setValue(int)));
+  /*QObject::connect(this->WebView, SIGNAL(navigationRequested(WebEngineNavigationRequest)),
+   q, SLOT(setValue(int)));*/
 
   this->ProgressBar->setVisible(false);
 
